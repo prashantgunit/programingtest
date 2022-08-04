@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="PetModel"
+            type="com.petsprogramingtest.models.Pet" />
+
+        <variable
+            name="OnPetClick"
+            type="com.petsprogramingtest.interfaces.OnClickPetItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> OnPetClick.onClickPet(PetModel)}">
+
+        <ImageView
+            android:id="@+id/ivPet"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:petImageUrl="@{PetModel.imageUrl}"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/blackLight"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@{PetModel.title}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivPet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivPet"
+            app:layout_constraintTop_toTopOf="@+id/ivPet"
+            tools:text="TITLE" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
